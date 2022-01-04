@@ -8,23 +8,40 @@ import {
   Text,
   Flex,
   Box,
+  useToast,
 } from "@chakra-ui/react";
+import { CreateEmployee } from "../services";
 
 export const EmployeeSignUp = () => {
+  const toast = useToast();
+
   const {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
-  } = useForm({ mode: "onChange" });
+  } = useForm();
 
-  function onSubmit(values) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        alert(JSON.stringify(values, null, 2));
-        resolve();
-      }, 3000);
-    });
-  }
+  const onSubmit = async (values) => {
+    try {
+      await CreateEmployee(values);
+
+      toast({
+        title: "Account created.",
+        description: "Employee account successfully created.",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+    } catch {
+      toast({
+        title: "Account was not created.",
+        description: "Please check the introduced data.",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+    }
+  };
 
   return (
     <Flex direction="column" alignItems="center">
@@ -34,12 +51,16 @@ export const EmployeeSignUp = () => {
 
       <Box p={5} minW={500} borderRadius="lg" background="blue.700">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <FormControl isInvalid={errors.name} pb={errors.name ? 0 : 5} mb={2}>
+          <FormControl
+            isInvalid={errors.first_name}
+            pb={errors.first_name ? 0 : 5}
+            mb={2}
+          >
             <Input
-              id="name"
+              id="first_name"
               placeholder="Name"
               backgroundColor="white"
-              {...register("name", {
+              {...register("first_name", {
                 required: "This field is required",
                 minLength: {
                   value: 4,
@@ -48,20 +69,20 @@ export const EmployeeSignUp = () => {
               })}
             />
             <FormErrorMessage mt={0}>
-              {errors.name && errors.name.message}
+              {errors.first_name && errors.first_name.message}
             </FormErrorMessage>
           </FormControl>
 
           <FormControl
-            isInvalid={errors.surname}
-            pb={errors.surname ? 0 : 5}
+            isInvalid={errors.last_name}
+            pb={errors.last_name ? 0 : 5}
             mb={2}
           >
             <Input
-              id="surname"
+              id="last_name"
               placeholder="Surname"
               backgroundColor="white"
-              {...register("surname", {
+              {...register("last_name", {
                 required: "This field is required",
                 minLength: {
                   value: 4,
@@ -70,7 +91,7 @@ export const EmployeeSignUp = () => {
               })}
             />
             <FormErrorMessage mt={0}>
-              {errors.surname && errors.surname.message}
+              {errors.last_name && errors.last_name.message}
             </FormErrorMessage>
           </FormControl>
 
@@ -90,29 +111,6 @@ export const EmployeeSignUp = () => {
             />
             <FormErrorMessage mt={0}>
               {errors.wage && errors.wage.message}
-            </FormErrorMessage>
-          </FormControl>
-
-          <FormControl
-            isInvalid={errors.companyId}
-            pb={errors.companyId ? 0 : 5}
-            mb={2}
-          >
-            <Input
-              id="companyId"
-              name="companyId"
-              backgroundColor="white"
-              placeholder="Company ID"
-              {...register("companyId", {
-                required: "This field is required",
-                minLength: {
-                  value: 3,
-                  message: "Minimum length should be 3",
-                },
-              })}
-            />
-            <FormErrorMessage mt={0}>
-              {errors.companyId && errors.companyId.message}
             </FormErrorMessage>
           </FormControl>
 
@@ -141,61 +139,54 @@ export const EmployeeSignUp = () => {
           </FormControl>
 
           <FormControl
-            isInvalid={errors.password}
-            pb={errors.password ? 0 : 5}
+            isInvalid={errors.managed_by_id}
+            pb={errors.managed_by_id ? 0 : 5}
             mb={2}
           >
             <Input
-              type="password"
-              name="password"
+              type="text"
+              id="managed_by_id"
               backgroundColor="white"
-              id="password"
-              placeholder="Create password"
-              {...register("password", {
-                required: "This field is required",
-                minLength: {
-                  value: 6,
-                  message: "Minimum length should be 6",
-                },
-              })}
+              name="managed_by_id"
+              placeholder="Managed by ID"
             />
             <FormErrorMessage mt={0}>
-              {errors.password && errors.password.message}
+              {errors.managed_by_id && errors.managed_by_id.message}
             </FormErrorMessage>
           </FormControl>
 
           <FormControl
-            isInvalid={errors.managedById}
-            pb={errors.managedById ? 0 : 5}
+            isInvalid={errors.work_hours}
+            pb={errors.work_hours ? 0 : 5}
+            mb={2}
+          >
+            <Input
+              type="number"
+              id="work_hours"
+              backgroundColor="white"
+              name="work_hours"
+              placeholder="Work hours"
+              {...register("work_hours", {
+                required: "This field is required",
+              })}
+            />
+            <FormErrorMessage mt={0}>
+              {errors.work_hours && errors.work_hours.message}
+            </FormErrorMessage>
+          </FormControl>
+
+          <FormControl
+            isInvalid={errors.role_id}
+            pb={errors.role_id ? 0 : 5}
             mb={2}
           >
             <Input
               type="text"
-              id="managedById"
-              backgroundColor="white"
-              name="managedById"
-              placeholder="Managed by ID"
-              {...register("managedById", {
-                required: "This field is required",
-                minLength: {
-                  value: 3,
-                  message: "Minimum length should be 3",
-                },
-              })}
-            />
-            <FormErrorMessage mt={0}>
-              {errors.managedById && errors.managedById.message}
-            </FormErrorMessage>
-          </FormControl>
-
-          <FormControl isInvalid={errors.role} pb={errors.role ? 0 : 5} mb={2}>
-            <Input
-              type="text"
-              id="role"
-              name="role"
+              id="role_id"
+              name="role_id"
               backgroundColor="white"
               placeholder="Role"
-              {...register("role", {
+              {...register("role_id", {
                 required: "This field is required",
                 minLength: {
                   value: 4,
@@ -204,23 +195,23 @@ export const EmployeeSignUp = () => {
               })}
             />
             <FormErrorMessage mt={0}>
-              {errors.role && errors.role.message}
+              {errors.role_id && errors.role_id.message}
             </FormErrorMessage>
           </FormControl>
 
           <FormControl
-            isInvalid={errors.startDate}
-            pb={errors.name ? 0 : 5}
+            isInvalid={errors.start_date}
+            pb={errors.start_date ? 0 : 5}
             mb={2}
           >
             <Input
               type="date"
-              id="startDate"
+              id="start_date"
               backgroundColor="white"
-              name="startDate"
+              name="start_date"
               placeholder="Start date"
               required
-              {...register("startDate", {
+              {...register("start_date", {
                 required: "This field is required",
               })}
             />
