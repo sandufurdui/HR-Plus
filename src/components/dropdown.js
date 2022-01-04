@@ -1,126 +1,139 @@
 import React, { Component } from "react";
+
 import Turnover from "./turnover";
 import Meeting from "./meetingpop";
-import Replace from "./replacement"
-import Training from "./training"
-import Employee from "./employee"
-import "../style/pop.css"
+import Replace from "./replacement";
+import Training from "./training";
+import Employee from "./employee";
+
+import "../style/pop.css";
 
 export class dropdown extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            showAdmin: true,
-            showTurnover: false,
-            showReplacement: false,
-            showTraining: false,
-            showMeeting: false,
-            showEmployee: false,
-        };
-        this.TurnoverPop = this.TurnoverPop.bind(this);
-        this.replacementPop = this.replacementPop.bind(this);
-        this.trainingPop = this.trainingPop.bind(this);
-        this.meetingPop = this.meetingPop.bind(this);
-        this.employeePop = this.employeePop.bind(this);
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      showAdmin: true,
+      showTurnover: false,
+      showReplacement: false,
+      showTraining: false,
+      showMeeting: false,
+      showEmployee: false,
+    };
+    this.TurnoverPop = this.TurnoverPop.bind(this);
+    this.replacementPop = this.replacementPop.bind(this);
+    this.trainingPop = this.trainingPop.bind(this);
+    this.meetingPop = this.meetingPop.bind(this);
+    this.employeePop = this.employeePop.bind(this);
+  }
 
-    TurnoverPop() {
-        this.setState({
-            showTurnover: true,
-        });
-    }
+  TurnoverPop() {
+    this.setState({
+      showTurnover: true,
+    });
+  }
 
-    hideTurnoverPop() {
-        this.setState({
-            showTurnover: false,
-        });
-    }
+  hideTurnoverPop() {
+    this.setState({
+      showTurnover: false,
+    });
+  }
 
-    replacementPop() {
-        this.setState({
-            showReplacement: true,
-        });
-    }
+  replacementPop() {
+    this.setState({
+      showReplacement: true,
+    });
+  }
 
-    hideReplacementPop() {
-        this.setState({
-            showReplacement: false,
-        });
-    }
+  hideReplacementPop() {
+    this.setState({
+      showReplacement: false,
+    });
+  }
 
-    trainingPop() {
-        this.setState({
-            showTraining: true,
-        });
-    }
+  trainingPop() {
+    this.setState({
+      showTraining: true,
+    });
+  }
 
-    hideTrainingPop() {
-        this.setState({
-            showTraining: false,
-        });
-    }
+  hideTrainingPop() {
+    this.setState({
+      showTraining: false,
+    });
+  }
 
-    meetingPop() {
-        this.setState({
-            showMeeting: true,
-        });
-    }
+  meetingPop() {
+    this.setState({
+      showMeeting: true,
+    });
+  }
 
-    hideMeetingPop() {
-        this.setState({
-            showMeeting: false,
-        });
-    }
-    employeePop() {
-        this.setState({
-            showEmployee: true,
-        });
-    }
+  hideMeetingPop() {
+    this.setState({
+      showMeeting: false,
+    });
+  }
+  employeePop() {
+    this.setState({
+      showEmployee: true,
+    });
+  }
 
-    hideEmployeePop() {
-        this.setState({
-            showEmployee: false,
-        });
-    }
+  hideEmployeePop() {
+    this.setState({
+      showEmployee: false,
+    });
+  }
 
-    render() {
-        return (
-            <div>
-
-                {this.state.showAdmin ? (
-                    <div class="dropdown">
-                        <button class="dropbtn"> some fun actions </button>
-                        <div class="dropdown-content">
-                            <a class="dark-bg" href="#addreplacement" onClick={this.replacementPop}>
-                                + add replacement
-                            </a>
-                            <a class="dark-bg" href="#addturnover" onClick={this.TurnoverPop}>
-                                + add turnover
-                            </a>
-                            <a class="dark-bg" href="#addtraining" onClick={this.trainingPop}>
-                                + add training
-                            </a>
-                            <a class="dark-bg" href="#addemployee" onClick={this.employeePop}>
-                                + add employee
-                            </a>
-                            <a class="dark-bg " href="#addmeet" onClick={this.meetingPop}>
-                                + add meeting
-                            </a>
-                        </div>
-                    </div>
-                ) : null}
-                {this.state.showReplacement ? (
-                    <Replace />
-                ) : null}
-                {this.state.showTraining ? (
-                   <Training /> 
-                ) : null}
-                {this.state.showMeeting ? <Meeting /> : null}
-                {this.state.showTurnover ? <Turnover /> : null}
-                {this.state.showEmployee ? <Employee /> : null}
+  render() {
+    return (
+      <div>
+        {this.state.showAdmin ? (
+          <div className="dropdown">
+            <button className="dropbtn"> some fun actions </button>
+            <div className="dropdown-content">
+              <a
+                className="dark-bg"
+                href="#addreplacement"
+                onClick={this.replacementPop}
+              >
+                + add replacement
+              </a>
+              <a
+                className="dark-bg"
+                href="#addturnover"
+                onClick={this.TurnoverPop}
+              >
+                + add turnover
+              </a>
+              <a
+                className="dark-bg"
+                href="#addtraining"
+                onClick={this.trainingPop}
+              >
+                + add training
+              </a>
+              <a
+                className="dark-bg"
+                href="#addemployee"
+                onClick={this.employeePop}
+              >
+                + add employee
+              </a>
+              <a className="dark-bg " href="#addmeet" onClick={this.meetingPop}>
+                + add meeting
+              </a>
             </div>
-        );
-    }
+          </div>
+        ) : null}
+        {this.state.showReplacement ? <Replace /> : null}
+        {this.state.showTraining ? <Training /> : null}
+        {this.state.showMeeting ? <Meeting /> : null}
+        {this.state.showTurnover ? <Turnover /> : null}
+        {this.state.showEmployee ? <Employee /> : null}
+      </div>
+    );
+  }
 }
 
 export default dropdown;

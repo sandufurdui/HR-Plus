@@ -10,45 +10,45 @@ import "../style/footer.css";
 
 export const UserDashboardPage = () => {
   return (
-    <div class="user-dashboard">
-      <div class="employee-info">
-        <div class="image">
+    <div className="user-dashboard">
+      <div className="employee-info">
+        <div className="image">
           <img src={UserAvatar} alt="UserAvatar" />
         </div>
-        <div class="info">
-          <p class="employee-surname-name">Employee Name</p>
-          <p class="employee-surname-name">Employee Surame</p>
-          <p class="email-work-hours">Email: employee@org.com</p>
-          <p class="email-work-hours">Work Hours: xx</p>
+        <div className="info">
+          <p className="employee-surname-name">Employee Name</p>
+          <p className="employee-surname-name">Employee Surame</p>
+          <p className="email-work-hours">Email: employee@org.com</p>
+          <p className="email-work-hours">Work Hours: xx</p>
         </div>
       </div>
-      <div class="calendar">
+      <div className="calendar">
         <Calendar />
       </div>
-      <div class="footer">
-        <div class="inf">
-          <img class="logo" src={Logo} />
+      <div className="footer">
+        <div className="inf">
+          <img className="logo" src={Logo} />
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim{" "}
           </p>
         </div>
-        <div class="contacts">
-          <a href="" class="about">
+        <div className="contacts">
+          <a href="" className="about">
             About
           </a>
-          <a href="" class="help_center">
+          <a href="" className="help_center">
             Help Center{" "}
           </a>
-          <a href="" class="contact_us">
+          <a href="" className="contact_us">
             Contact Us{" "}
           </a>
         </div>
-        <div class="follow">
+        <div className="follow">
           <h3>Follow us</h3>
-          <img class="insta" src="../instagram.png" />
-          <img class="facebook" src="../facebook.png" />
-          <img class="twitter" src="../twitter.png" />
+          <img className="insta" src="../instagram.png" />
+          <img className="facebook" src="../facebook.png" />
+          <img className="twitter" src="../twitter.png" />
         </div>
       </div>
     </div>

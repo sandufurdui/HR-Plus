@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import SignIn from "./admSignInComp";
+
+import { AdminSignIn } from "./admSignInComp";
 import EmployeeAuth from "./employeeAuth";
+
 import Logo from "../assets/HR-app_logo.svg";
 
 export class auth extends Component {
@@ -33,28 +35,31 @@ export class auth extends Component {
       <div>
         {this.state.showChoose ? (
           <section
-            class="u-align-center u-clearfix u-grey-10 u-section-1"
+            className="u-align-center u-clearfix u-grey-10 u-section-1"
             id="sec-c036"
           >
-            <div class="u-clearfix u-sheet u-sheet-1">
-              <div class="clear u-align-center u-container-style u-custom-color-1 u-group u-radius-50 u-shape-round u-group-1">
+            <div className="u-clearfix u-sheet u-sheet-1">
+              <div className="clear u-align-center u-container-style u-custom-color-1 u-group u-radius-50 u-shape-round u-group-1">
                 <div>
                   <div>
-                    <h3 class="u-text u-text-default u-text-1 welcome">
+                    <h3 className="u-text u-text-default u-text-1 welcome">
                       Welcome to
                     </h3>
                     <div className="centered-content">
-                      <img class="logo" src={Logo} />
+                      <img className="logo" src={Logo} />
                     </div>
                   </div>
-                  <div class="choose centered-content">
+                  <div className="choose centered-content">
                     <button
-                      class="employee choose_button"
+                      className="employee choose_button"
                       onClick={this.EmployeeChoose}
                     >
                       Employee
                     </button>
-                    <button class="choose_button" onClick={this.AdminChoose}>
+                    <button
+                      className="choose_button"
+                      onClick={this.AdminChoose}
+                    >
                       Admin
                     </button>
                   </div>
@@ -65,7 +70,7 @@ export class auth extends Component {
         ) : null}
 
         {this.state.showEmployee ? <EmployeeAuth /> : null}
-        {this.state.showAdmin ? <SignIn /> : null}
+        {this.state.showAdmin ? <AdminSignIn /> : null}
       </div>
     );
   }
