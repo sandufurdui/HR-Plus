@@ -1,48 +1,49 @@
-.bg-adv-color{
-    background-color: #d8e8e8;
+html {
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
-html {
-    overflow: scroll;
-    overflow-x: hidden;
+body {
+  background-color: #d8e8e8;
 }
+
 ::-webkit-scrollbar {
-    width: 0;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
 }
 /* Optional: show position indicator in red */
 ::-webkit-scrollbar-thumb {
-    background: #FF0000;
+  background: #ff0000;
 }
 
-.limited-width{
-    width: 150px;
+.limited-width {
+  width: 150px;
 }
 
 .button-design {
-    cursor: pointer; 
-    width:120px;
-    height:1.7em;
-    font-size:1.6em;
-    font-family: 'Gilroy', sans-serif;
-    border-radius: 10px;
-    color: white;
-    background:#e2474b;
-    border:solid 1px #e2474b;
-    margin-top:20px;
-    margin:auto;
-  display:block;
+  cursor: pointer;
+  width: 120px;
+  height: 1.7em;
+  font-size: 1.6em;
+  font-family: "Gilroy", sans-serif;
+  border-radius: 10px;
+  color: white;
+  background: #e2474b;
+  border: solid 1px #e2474b;
+  margin-top: 20px;
+  margin: auto;
+  display: block;
 }
 
 .pretty-input {
-    width: 95%;
-    height: 35px;
-    border-radius: 8px;
-    border: 1px white;
-    padding: 0 10px;
+  width: 95%;
+  height: 35px;
+  border-radius: 8px;
+  border: 1px white;
+  padding: 0 10px;
 }
 
 .text-size {
-    margin-top: 15px !important;
-    margin-bottom: 15px !important;
+  margin-top: 15px !important;
+  margin-bottom: 15px !important;
 }
