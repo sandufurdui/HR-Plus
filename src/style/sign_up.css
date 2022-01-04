@@ -1,0 +1,111 @@
+.red-alert{
+    color: red;
+    font-size: 11px;
+}
+
+.register-title{
+    font-family: 'Sansita', sans-serif;
+}
+
+.sign-up-title{
+    text-align: center;
+    color:#406d96;
+    font-size:3em;
+    margin-top:2.5%;
+}
+
+.sign-up-div{
+    padding:20px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom: 100px;
+    height:auto;
+    max-width:calc(var(--size-form-register) / 1.5);
+    width:45vw;
+    border-radius: 25px;
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content:center;
+    background:#406d96;
+    box-shadow: 0px 0px 18px -2px rgba(0,0,0,0.39);
+}
+.sign-up-form{  
+    max-width:calc(var(--size-form-register) / 1.5); 
+    width:100%;
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    align-items:center;
+
+}
+
+.container-sign-up{
+    display:flex;
+    flex-direction: column;
+    width:100vw;
+    margin-left:auto;
+    margin-right:auto;
+}
+.sign-up-form label input{
+    max-width:calc(var(--size-form-register) / 1.6);
+    width:40vw;
+    height:25px;
+    margin:8px;
+    padding:5px;
+    border: 1px solid rgb(255, 255, 255);
+   border-radius: 8px;
+   font-size:1em;
+   
+}
+a[type=submit]{   
+    cursor: pointer; 
+    width:140px;
+    height:1.9em;
+    font-size:1.6em;
+    font-family: 'Sansita', sans-serif;
+    border-radius: 10px;
+    color: white;
+    background:#e2474b;
+    border:solid 1px #e2474b;
+    margin-top:20px;
+    text-align: center;
+    padding-top: 0.4em;
+
+}
+
+.chakra-form-control {
+    min-height: 100px;
+}
+
+button[type=submit]{   
+    cursor: pointer; 
+    width:140px;
+    height:1.9em;
+    font-size:1.6em;
+    font-family: 'Sansita', sans-serif;
+    border-radius: 10px;
+    color: white;
+    background:#e2474b;
+    border:solid 1px #e2474b;
+    margin-top:20px;
+
+}
+
+.register-form {
+    max-width:calc(var(--size-form-register) / 3.3);
+    width:33vw;
+    margin-left: -5px;
+    margin-right: -5px;   
+}
+
+body{
+    --size-form-register:1400px;
+   margin:0;
+   padding:0;
+   font-family: 'Dosis', sans-serif;
+}
+a[type="submit"]:hover{
+    box-shadow: 0px 0px 12px 3px rgba(206, 53, 53, 0.62);
+}

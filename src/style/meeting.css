@@ -1,0 +1,50 @@
+.time-input {
+    height: 35px;
+    border-radius: 8px;
+    border: 1px white;
+    width: 90px;
+    padding: 0 10px;
+}
+
+.text-size {
+    font-size: 1.2em;
+    /* padding-left: 18px; */
+}
+
+.myCheckbox {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-end;
+}
+
+.checkbox-div {
+    height: 30px !important;
+    padding: 10px 30px;
+    margin-bottom: 30px;
+}
+
+.checkbox-input {
+    margin-left: 10px;
+}
+
+.date-box {
+    border-radius: 6px;
+    border: 1px white;
+    height: 35px;
+    padding: 0 10px;
+}
+
+.meeting-form {
+    max-width: 100% !important;
+}
+
+.notes {
+    border-radius: 8px;
+    width: 95%;
+    height: 150px;
+    min-height: 100px;
+    max-height: 200px;
+    max-width: 95% !important;
+    padding: 10px;
+}

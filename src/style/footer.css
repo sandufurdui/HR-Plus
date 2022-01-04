@@ -1,0 +1,48 @@
+.footer {
+    display: flex;
+    flex-direction: row;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #2d3a56;
+    color: white;
+    padding: 5px 30px 20px 50px;
+    font-size: 0.8em;
+    height: auto !important;
+}
+
+img.logo {
+    width: 300px !important;
+}
+
+.logo {
+    margin-bottom: -20px;
+    width: 45px;
+}
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 3;
+    padding: 30px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.inf {
+    flex-grow: 1;
+    width: 150px;
+}
+
+.follow {
+    flex-grow: 1;
+}
+
+h3 {
+    color: #e2474b;
+    margin-bottom: 5px;
+    font-size: 1.5em;
+}
