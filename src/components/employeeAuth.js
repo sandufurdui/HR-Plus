@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import SignIn from "./usrSigninComp";
-import { EmployeeSignUp } from "./signupComp";
+import { EmployeeSignUp } from "./EmployeeSignUp";
 
 import "../style/Home.css";
 
