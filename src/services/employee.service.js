@@ -4,4 +4,8 @@ const CreateEmployee = (employee) => {
   return httpService.post("employees/", employee);
 };
 
-export { CreateEmployee };
+const GetEmployeeByEmail = (email) => {
+  return httpService.get(`employees/by-email/${email}`);
+};
+
+export { CreateEmployee, GetEmployeeByEmail };

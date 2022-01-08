@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  background-color: #d8e8e8;
+  background-color: #d8e8e8 !important;
 }
 
 ::-webkit-scrollbar {

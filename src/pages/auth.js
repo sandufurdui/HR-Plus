@@ -1,6 +1,6 @@
 import React from "react";
-import Auth from "../components/authComp";
+import { Registration } from "../components/registration";
 
 export const AuthPage = () => {
-  return <Auth />;
+  return <Registration />;
 };
