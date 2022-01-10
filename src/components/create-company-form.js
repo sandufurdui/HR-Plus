@@ -26,9 +26,8 @@ const CreateCompanyForm = () => {
 
   const onSubmit = async (values) => {
     try {
-      console.log({ values });
       const company = await CreateCompany(values);
-      console.log(company);
+
       if (company.data.id) {
         loginWithRedirect();
       }

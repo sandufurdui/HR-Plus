@@ -12,7 +12,9 @@ export const SignInSSO = () => {
     if (isAuthenticated && user) {
       GetEmployeeByEmail(user.email).then((employee) => {
         if (employee.data.id) {
-          history.push(employee.role === "admin" ? "/admin" : "/userDashboard");
+          history.push(
+            employee.data.role === "admin" ? "/adminPanel" : "/userDashboard"
+          );
         }
       });
     }
