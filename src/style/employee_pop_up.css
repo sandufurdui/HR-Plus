@@ -1,0 +1,54 @@
+.pop-width {
+    width: 25vw !important;
+}
+
+.replacement-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-size {
+    font-size: 1.05em;
+}
+
+.text-design {
+    font-weight: bold;
+    color: white;
+}
+
+
+.display-style {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: baseline;
+    margin-left: 5px;
+}
+
+.date-input {
+    border-radius: 6px;
+    border: 1px white;
+    height: 28px;
+    padding: 0 10px;
+}
+
+.input-design {
+    /* height: 20px; */
+    border-radius: 5px;
+    border: 1px solid white;
+    width: 93%;
+    padding-left: 7px;
+    margin: 5px;
+}
+
+.role {
+    width: 97% !important;
+    height: 27px !important;
+    padding-left: 2px !important;
+}
+
+
+.button-design {
+    margin-top: 20px !important;
+}
+
