@@ -12,6 +12,8 @@ const App = () => {
         domain={process.env.REACT_APP_AUTH_0_DOMAIN}
         clientId={process.env.REACT_APP_AUTH_0_CLIENT_ID}
         redirectUri={window.location.origin + "/sign-in-sso"}
+        useRefreshTokens
+        cacheLocation="localstorage"
       >
         <Router />
       </Auth0Provider>

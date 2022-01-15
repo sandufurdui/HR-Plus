@@ -10,25 +10,26 @@ import Calendar from "../components/CalendarComp";
 import UserAvatar from "../assets/user-avatar.png";
 import Logo from "../assets/HR-app_logo-white.svg";
 
-import "../style/user_dashboard.css";
 import "../style/footer.css";
 
 export const UserDashboardPage = () => {
   const history = useHistory();
-  const { user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated, isLoading } = useAuth0();
   const [employee, setEmployee] = useState(null);
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!isAuthenticated && !isLoading) {
       history.push("/");
       return;
     }
-    GetEmployeeByEmail(user.email).then((employee) => {
-      if (employee.data.id) {
-        setEmployee(employee.data);
-      }
-    });
-  }, [isAuthenticated, history]);
+    if (user) {
+      GetEmployeeByEmail(user.email).then((employee) => {
+        if (employee.data.id) {
+          setEmployee(employee.data);
+        }
+      });
+    }
+  }, [isAuthenticated, history, isLoading, user]);
 
   if (!user || !employee) {
     return null;
