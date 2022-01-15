@@ -6,13 +6,12 @@ import Logo from "../assets/HR-app_logo-white.svg";
 import UserAvatar from "../assets/user-avatar.png";
 
 import "../style/admin_panel.css";
-import "../style/user_dashboard.css";
-import "../style/footer.css";
+// import "../style/xxx.css"
 
 export const AdminPanel = () => {
   return (
     <div className="user-dashboard">
-      <div className="employee-info">
+      <div className="employee-info ">
         <div className="image">
           <img src={UserAvatar} alt="userAvatar" />
         </div>
@@ -37,11 +36,6 @@ export const AdminPanel = () => {
               min="2021-01-01"
               max="2030-12-31"
             />
-            {/*<button>save</button> in case button is needed*/}
-            {/*
-                        input calendar
-                        https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date
-                        */}
           </div>
           <div className="end-date">
             <label className="start-date-label" htmlFor="end">
@@ -54,11 +48,6 @@ export const AdminPanel = () => {
               min="2021-01-01"
               max="2030-12-31"
             />
-            {/*<button>save</button> in case button is needed*/}
-            {/*
-                        input calendar
-                        https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date
-                        */}
           </div>
         </div>
 
