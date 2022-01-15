@@ -16,4 +16,16 @@ const GetEmployeeByEmail = (email, accessToken) => {
   });
 };
 
-export { CreateEmployee, GetEmployeeByEmail };
+const GetEmployeeByID = (id) => {
+  return httpService.get(`employees/${id}`);
+};
+
+const PutEmployeeByID = (id) => {
+  return httpService.put(`employees/${id}`);
+};
+
+const DeleteEmployeeByID = (id) => {
+  return httpService.delete(`employees/${id}`);
+};
+
+export { CreateEmployee, GetEmployeeByEmail, GetEmployeeByID, PutEmployeeByID, DeleteEmployeeByID };
