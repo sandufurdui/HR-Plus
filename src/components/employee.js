@@ -1,48 +1,236 @@
-import React from "react";
-import "../style/employee_pop_up.css"
+import { useForm } from "react-hook-form";
+import {
+  FormErrorMessage,
+  FormControl,
+  Input,
+  Button,
+  FormLabel,
+  Flex,
+  ModalOverlay,
+  useToast,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+} from "@chakra-ui/react";
 
-function employee() {
+import { CreateEmployee } from "../services";
+
+export const Employee = (props) => {
+  const toast = useToast();
+
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm();
+
+  const onSubmit = async (values) => {
+    try {
+      await CreateEmployee(values);
+
+      toast({
+        title: "Employee account successfully created.",
+        description: "We sent an invitation to the newly created employee",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+    } catch {
+      toast({
+        title: "Account was not created.",
+        description: "Please check the introduced data.",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+    }
+  };
+
   return (
-    <div>
-      <div id="addemployee" className="overlay">
-        {/*change id to the respective meed name*/}
-        <div className="popup">
-          <div className="pop-div">
-            <h2 />
-            <a className="close" href="#">
-              &times;
-            </a>
-            <form class="replacement-form">
-              <input type="text" name="name" class="input-design" placeholder="Name" required />
-              <input type="text" name="surname" class="input-design" placeholder="Surname" required />
-              <input type="text" name="wage" class="input-design" placeholder="Wage" required />
-              <input type="text" name="company-id" class="input-design" placeholder="Company ID" required />
-              <input type="email" name="email" class="input-design" placeholder="Email" required />
-              <input type="password" name="password" class="input-design" placeholder="Password" required />
-              <input type="text" name="managed-by-id" class="input-design" placeholder="Managed by ID" required />
-              <select name="role" class="role input-design" value="Role">
-                <option value="" disabled selected hidden>
+    <Modal isOpen onClose={props.onClose}>
+      <ModalOverlay />
+      <ModalContent backgroundColor="blue.700">
+        <ModalHeader color="white">Create an employee</ModalHeader>
+        <ModalCloseButton />
+        <ModalBody pb={6}>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Flex>
+              <FormControl
+                isInvalid={errors.first_name}
+                pb={errors.first_name ? 0 : 5}
+                mb={2}
+                mr={2}
+              >
+                <FormLabel color="white" htmlFor="first_name">
+                  First Name
+                </FormLabel>
+                <Input
+                  id="first_name"
+                  placeholder="First Name"
+                  backgroundColor="white"
+                  {...register("first_name", {
+                    required: "This field is required",
+                    minLength: {
+                      value: 4,
+                      message: "Minimum length should be 4",
+                    },
+                  })}
+                />
+                <FormErrorMessage mt={0}>
+                  {errors.first_name && errors.first_name.message}
+                </FormErrorMessage>
+              </FormControl>
+
+              <FormControl
+                isInvalid={errors.last_name}
+                pb={errors.last_name ? 0 : 5}
+                mb={2}
+              >
+                <FormLabel color="white" htmlFor="last_name">
+                  Surname
+                </FormLabel>
+                <Input
+                  id="last_name"
+                  placeholder="Surname"
+                  backgroundColor="white"
+                  {...register("last_name", {
+                    required: "This field is required",
+                    minLength: {
+                      value: 4,
+                      message: "Minimum length should be 4",
+                    },
+                  })}
+                />
+                <FormErrorMessage mt={0}>
+                  {errors.last_name && errors.last_name.message}
+                </FormErrorMessage>
+              </FormControl>
+            </Flex>{" "}
+            <FormControl
+              isInvalid={errors.email}
+              pb={errors.email ? 0 : 5}
+              mb={2}
+            >
+              <FormLabel color="white" htmlFor="email">
+                Email
+              </FormLabel>
+              <Input
+                type="email"
+                id="email"
+                name="email"
+                backgroundColor="white"
+                placeholder="Email"
+                {...register("email", {
+                  required: "This field is required",
+                  minLength: {
+                    value: 4,
+                    message: "Minimum length should be 4",
+                  },
+                })}
+              />
+              <FormErrorMessage mt={0}>
+                {errors.email && errors.email.message}
+              </FormErrorMessage>
+            </FormControl>
+            <FormControl
+              isInvalid={errors.wage}
+              pb={errors.wage ? 0 : 5}
+              mb={2}
+            >
+              <FormLabel color="white" htmlFor="wage">
+                Wage
+              </FormLabel>
+              <Input
+                type="number"
+                id="wage"
+                name="wage"
+                backgroundColor="white"
+                placeholder="Wage"
+                {...register("wage", {
+                  required: "This field is required",
+                  minLength: {
+                    value: 1,
+                  },
+                })}
+              />
+              <FormErrorMessage mt={0}>
+                {errors.wage && errors.wage.message}
+              </FormErrorMessage>
+            </FormControl>
+            <FormControl
+              isInvalid={errors.managed_by_id}
+              pb={errors.managed_by_id ? 0 : 5}
+              mb={2}
+            >
+              <FormLabel color="white" htmlFor="managed_by_id">
+                Managed by ID
+              </FormLabel>
+              <Input
+                type="text"
+                id="managed_by_id"
+                backgroundColor="white"
+                name="managed_by_id"
+                placeholder="Managed by ID"
+              />
+              <FormErrorMessage mt={0}>
+                {errors.managed_by_id && errors.managed_by_id.message}
+              </FormErrorMessage>
+            </FormControl>
+            <Flex>
+              <FormControl
+                isInvalid={errors.role}
+                pb={errors.role ? 0 : 5}
+                mb={2}
+                mr={2}
+              >
+                <FormLabel color="white" htmlFor="role">
                   Role
-                </option>
-              </select>
-              <div class=" display-style">
-                <p class="text-color text-size">Start date</p>
-                <input type="date" name="date" class="date-input " required />
-              </div>
-              <div class=" display-style">
-                <p class="text-color text-size">End date</p>
-                <input type="date" name="date" class="date-input " required />
-              </div>
-
-              <button class="button-design" type="submit" value="Submit">
+                </FormLabel>
+                <Input
+                  type="text"
+                  id="role"
+                  name="role"
+                  backgroundColor="white"
+                  placeholder="Role"
+                  {...register("role", {
+                    required: "This field is required",
+                  })}
+                />
+                <FormErrorMessage mt={0}>
+                  {errors.role && errors.role.message}
+                </FormErrorMessage>
+              </FormControl>
+              <FormControl
+                isInvalid={errors.start_date}
+                pb={errors.start_date ? 0 : 5}
+                mb={2}
+              >
+                <FormLabel color="white" htmlFor="start_date">
+                  Start date
+                </FormLabel>
+                <Input
+                  type="date"
+                  id="start_date"
+                  backgroundColor="white"
+                  name="start_date"
+                  placeholder="Start date"
+                  required
+                  {...register("start_date", {
+                    required: "This field is required",
+                  })}
+                />
+              </FormControl>
+            </Flex>
+            <Flex justifyContent="center">
+              <Button type="submit" colorScheme="red" isLoading={isSubmitting}>
                 Submit
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+              </Button>
+            </Flex>
+          </form>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
   );
-}
-
-export default employee;
+};

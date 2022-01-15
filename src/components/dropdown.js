@@ -4,7 +4,7 @@ import Turnover from "./turnover";
 import Meeting from "./meetingpop";
 import Replace from "./replacement";
 import Training from "./training";
-import Employee from "./employee";
+import { Employee } from "./employee";
 
 import "../style/pop.css";
 
@@ -88,49 +88,50 @@ export class dropdown extends Component {
   render() {
     return (
       <div>
-        {this.state.showAdmin ? (
-          <div className="dropdown">
-            <button className="dropbtn"> some fun actions </button>
-            <div className="dropdown-content">
-              <a
-                className="dark-bg"
-                href="#addreplacement"
-                onClick={this.replacementPop}
-              >
-                + add replacement
-              </a>
-              <a
-                className="dark-bg"
-                href="#addturnover"
-                onClick={this.TurnoverPop}
-              >
-                + add turnover
-              </a>
-              <a
-                className="dark-bg"
-                href="#addtraining"
-                onClick={this.trainingPop}
-              >
-                + add training
-              </a>
-              <a
-                className="dark-bg"
-                href="#addemployee"
-                onClick={this.employeePop}
-              >
-                + add employee
-              </a>
-              <a className="dark-bg " href="#addmeet" onClick={this.meetingPop}>
-                + add meeting
-              </a>
-            </div>
+        <div className="dropdown">
+          <button className="dropbtn"> some fun actions </button>
+          <div className="dropdown-content">
+            <a
+              className="dark-bg"
+              href="#addreplacement"
+              onClick={this.replacementPop}
+            >
+              + add replacement
+            </a>
+            <a
+              className="dark-bg"
+              href="#addturnover"
+              onClick={this.TurnoverPop}
+            >
+              + add turnover
+            </a>
+            <a
+              className="dark-bg"
+              href="#addtraining"
+              onClick={this.trainingPop}
+            >
+              + add training
+            </a>
+            <a
+              className="dark-bg"
+              href="#addemployee"
+              onClick={this.employeePop}
+            >
+              + add employee
+            </a>
+            <a className="dark-bg " href="#addmeet" onClick={this.meetingPop}>
+              + add meeting
+            </a>
           </div>
-        ) : null}
-        {this.state.showReplacement ? <Replace /> : null}
-        {this.state.showTraining ? <Training /> : null}
-        {this.state.showMeeting ? <Meeting /> : null}
-        {this.state.showTurnover ? <Turnover /> : null}
-        {this.state.showEmployee ? <Employee /> : null}
+        </div>
+
+        {this.state.showReplacement && <Replace />}
+        {this.state.showTraining && <Training />}
+        {this.state.showMeeting && <Meeting />}
+        {this.state.showTurnover && <Turnover />}
+        {this.state.showEmployee && (
+          <Employee onClose={() => this.hideEmployeePop()} />
+        )}
       </div>
     );
   }
