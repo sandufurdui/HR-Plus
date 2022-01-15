@@ -1,19 +1,40 @@
-import "../style/replacement.css";
-import { WorkHours } from "../services";
-import { FormControl, useToast, FormErrorMessage, Input, useNumberInput, Button, HStack } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
+import {
+    FormErrorMessage,
+    FormControl,
+    Input,
+    Button,
+    ModalOverlay,
+    useToast,
+    Modal,
+    ModalHeader,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    useNumberInput,
+    HStack,
+} from "@chakra-ui/react";
 
-export const AddWorkHours = () => {
+import { WorkHours } from "../services";
+
+
+export const AddWorkHours = (props) => {
     const toast = useToast();
-    const { errors, handleSubmit } = useForm()
+    //   const request = useApi();
+
+    const {
+        handleSubmit,
+        register,
+        formState: { errors, isSubmitting },
+    } = useForm();
 
     const onSubmit = async (values) => {
         try {
-            await WorkHours(values);
-            // console.log(replacement_cost);
+            // await WorkHours(values);
+
             toast({
-                title: "Work Hours added.",
-                description: "Work Hours added.",
+                title: "Worked Hours added.",
+                description: "Worked Hours has been successfully added.",
                 status: "success",
                 duration: 9000,
                 isClosable: true,
@@ -41,40 +62,36 @@ export const AddWorkHours = () => {
     const input = getInputProps({ isReadOnly: true })
 
     return (
-        <div>
-            <div id="addWorkHrs" className="overlay">
-                <div className="popup">
-                    <div className="pop-div">
-                        <h2 />
-                        <a className="close" href="#">
-                            &times;
-                        </a>
-                        <form className="addWorkHrs-form" onSubmit={handleSubmit(onSubmit)}>
-                            <FormControl
-                                isInvalid={errors?.worked_hours}
-                                pb={errors?.worked_hours ? 0 : 5}
-                                mb={2}
-                            >
-                                <HStack >
-                                    <Button {...dec}>-</Button>
-                                    <Input id="worked_hours" {...input} />
-                                    <Button {...inc}>+</Button>
-                                </HStack>
-                                <FormErrorMessage mt={0}>
-                                    {errors?.worked_hours && errors?.worked_hours.message}
-                                </FormErrorMessage>
-                            </FormControl>
+        <Modal isOpen onClose={props.onClose}>
+            <ModalOverlay />
+            <ModalContent backgroundColor="blue.700">
+                <ModalHeader color="white">Add Worked Hours</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody pb={6}>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <FormControl
+                            isInvalid={errors?.worked_hours}
+                            pb={errors?.worked_hours ? 0 : 5}
+                            mb={2}
+                        >
+                            <HStack >
+                                <Button {...dec}>-</Button>
+                                <Input id="worked_hours" color="white" {...input} />
+                                <Button {...inc}>+</Button>
+                            </HStack>
+                            <FormErrorMessage mt={0}>
+                                {errors?.worked_hours && errors?.worked_hours.message}
+                            </FormErrorMessage>
+                        </FormControl>
 
-                            <button className="button-design" type="submit" value="Submit">
-                                Submit
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        <button className="button-design" type="submit" value="Submit">
+                            Submit
+                        </button>
+                    </form>
+                </ModalBody>
+            </ModalContent>
+        </Modal>
     );
 }
-
 
 export default AddWorkHours;

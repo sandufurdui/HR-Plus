@@ -2,11 +2,12 @@ import React, { Component } from "react";
 
 import Turnover from "./turnover";
 import Meeting from "./meetingpop";
-import Replace from "./replacement";
+import ReplacementCost from "./replacement";
 import Training from "./training";
 import { Employee } from "./employee";
 
 import "../style/pop.css";
+// import { ReplacementCost } from "../services";
 
 export class dropdown extends Component {
   constructor(props) {
@@ -125,10 +126,18 @@ export class dropdown extends Component {
           </div>
         </div>
 
-        {this.state.showReplacement && <Replace />}
-        {this.state.showTraining && <Training />}
-        {this.state.showMeeting && <Meeting />}
-        {this.state.showTurnover && <Turnover />}
+        {this.state.showReplacement && (
+          <ReplacementCost onClose={() => this.hideReplacementPop()} />
+        )}
+        {this.state.showTraining && (
+          <Training onClose={() => this.hideTrainingPop()} />
+        )}
+        {this.state.showMeeting && (
+          <Meeting onClose={() => this.hideMeetingPop()} />
+        )}
+        {this.state.showTurnover && (
+          <Turnover onClose={() => this.hideTurnoverPop()} />
+        )}
         {this.state.showEmployee && (
           <Employee onClose={() => this.hideEmployeePop()} />
         )}
