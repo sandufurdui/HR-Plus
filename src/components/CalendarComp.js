@@ -20,7 +20,7 @@ export class CalendarComp extends Component {
     });
   }
 
-  HideaddWorkHrs() {
+  hideAddWorkHrs() {
     this.setState({
       showWorkHrs: false,
     });
@@ -28,12 +28,14 @@ export class CalendarComp extends Component {
   render() {
     return (
       <div>
-        {this.state.showCalendar ? (
+       
           <div>
             <Calendar onClickDay={this.addWorkHrsPop} id="date" view="day" className="main_calendar " tileClassName="tile_date" />
           </div>
-        ) : null}
-        {this.state.showWorkHrs ? <AddWorkHours /> : null}
+        ) 
+        {this.state.showWorkHrs && (
+          <AddWorkHours onClose={() => this.hideAddWorkHrs()} />
+        )}
       </div>
     );
   }
