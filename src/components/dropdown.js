@@ -2,12 +2,12 @@ import React, { Component } from "react";
 
 import Turnover from "./turnover";
 import Meeting from "./meetingpop";
-import Replace from "./replacement";
+import ReplacementCost from "./replacement";
 import Training from "./training";
 import { Employee } from "./employee";
 
 import "../style/pop.css";
-import { ReplacementCost } from "../services";
+// import { ReplacementCost } from "../services";
 
 export class dropdown extends Component {
   constructor(props) {
