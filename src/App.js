@@ -14,6 +14,7 @@ const App = () => {
         redirectUri={window.location.origin + "/sign-in-sso"}
         useRefreshTokens
         cacheLocation="localstorage"
+        audience="http://hrplus"
       >
         <Router />
       </Auth0Provider>

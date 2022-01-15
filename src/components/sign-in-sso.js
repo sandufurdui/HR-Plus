@@ -15,7 +15,7 @@ export const SignInSSO = () => {
       request((accessToken) =>
         GetEmployeeByEmail(user.email, accessToken)
       ).then((employee) => {
-        if (employee.data.id) {
+        if (employee && employee.data.id) {
           history.push(
             employee.data.role === "admin" ? "/adminPanel" : "/userDashboard"
           );

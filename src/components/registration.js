@@ -19,10 +19,7 @@ export const Registration = () => {
       <Image src={Logo} alt="logo" width={100} mt={-6} />
 
       <Box mt={5}>
-        <Button
-          colorScheme="red"
-          onClick={() => loginWithRedirect({ audience: "http://hrplus" })}
-        >
+        <Button colorScheme="red" onClick={loginWithRedirect}>
           Login
         </Button>
         <Button ml={20} colorScheme="red" as={"a"} href="/create-company">
