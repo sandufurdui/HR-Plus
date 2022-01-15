@@ -16,9 +16,11 @@ import {
 } from "@chakra-ui/react";
 
 import { CreateEmployee } from "../services";
+import { useApi } from "../services/useApi";
 
 export const Employee = (props) => {
   const toast = useToast();
+  const request = useApi();
 
   const {
     handleSubmit,
@@ -28,7 +30,7 @@ export const Employee = (props) => {
 
   const onSubmit = async (values) => {
     try {
-      await CreateEmployee(values);
+      await request((accessToken) => CreateEmployee(values, accessToken));
 
       toast({
         title: "Employee account successfully created.",
@@ -107,7 +109,7 @@ export const Employee = (props) => {
                   {errors.last_name && errors.last_name.message}
                 </FormErrorMessage>
               </FormControl>
-            </Flex>{" "}
+            </Flex>
             <FormControl
               isInvalid={errors.email}
               pb={errors.email ? 0 : 5}

@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { Text, Avatar, Flex, Box } from "@chakra-ui/react";
 
 import { GetEmployeeByEmail } from "../services";
+import { useApi } from "../services/useApi";
 
 import Calendar from "../components/CalendarComp";
 
@@ -16,6 +17,7 @@ export const UserDashboardPage = () => {
   const history = useHistory();
   const { user, isAuthenticated, isLoading } = useAuth0();
   const [employee, setEmployee] = useState(null);
+  const request = useApi();
 
   useEffect(() => {
     if (!isAuthenticated && !isLoading) {
@@ -23,7 +25,9 @@ export const UserDashboardPage = () => {
       return;
     }
     if (user) {
-      GetEmployeeByEmail(user.email).then((employee) => {
+      request((accessToken) =>
+        GetEmployeeByEmail(user.email, accessToken)
+      ).then((employee) => {
         if (employee.data.id) {
           setEmployee(employee.data);
         }
