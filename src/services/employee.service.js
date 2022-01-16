@@ -28,4 +28,19 @@ const DeleteEmployeeByID = (id) => {
   return httpService.delete(`employees/${id}`);
 };
 
-export { CreateEmployee, GetEmployeeByEmail, GetEmployeeByID, PutEmployeeByID, DeleteEmployeeByID };
+const GetCompanyEmployees = (accessToken) => {
+  return httpService.get("employees/by-company", {
+    headers: {
+      Authorization: "Bearer " + accessToken,
+    },
+  });
+};
+
+export {
+  CreateEmployee,
+  GetEmployeeByEmail,
+  GetEmployeeByID,
+  PutEmployeeByID,
+  DeleteEmployeeByID,
+  GetCompanyEmployees,
+};

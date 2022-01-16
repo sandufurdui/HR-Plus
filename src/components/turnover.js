@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import "../style/turnover.css";
+import { useEffect, useState } from "react";
 import {
   FormErrorMessage,
   FormControl,
@@ -17,14 +16,29 @@ import {
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 
+import { GetCompanyEmployees } from "../services";
+import { useApi } from "../services/useApi";
+
+import "../style/turnover.css";
+
 export const Turnover = (props) => {
   const toast = useToast();
+  const request = useApi();
+  const [employees, setEmployees] = useState([]);
 
   const {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
   } = useForm();
+
+  useEffect(() => {
+    request((accessToken) => GetCompanyEmployees(accessToken)).then(
+      (employees) => {
+        setEmployees(employees.data);
+      }
+    );
+  }, []);
 
   const onSubmit = async (values) => {
     try {
@@ -64,21 +78,24 @@ export const Turnover = (props) => {
               <FormLabel color="white" htmlFor="employee_id">
                 Select Employee
               </FormLabel>
-              <Select 
-              id="employee_id"
-              placeholder='Employee'
-              backgroundColor="white"
-              {...register("employee_id", {
-                required: "This field is required",
-              })}>
-                <option value='option1'>Option 1</option>
-                <option value='option2'>Option 2</option>
+              <Select
+                id="employee_id"
+                placeholder="Employee"
+                backgroundColor="white"
+                {...register("employee_id", {
+                  required: "This field is required",
+                })}
+              >
+                {employees.map((employee) => (
+                  <option value={employee.id} key={employee.id}>
+                    {employee.first_name} {employee.last_name}
+                  </option>
+                ))}
               </Select>
               <FormErrorMessage mt={0}>
                 {errors.employee_id && errors.employee_id.message}
               </FormErrorMessage>
             </FormControl>
-
 
             <Flex justifyContent="center">
               <Button type="submit" colorScheme="red" isLoading={isSubmitting}>

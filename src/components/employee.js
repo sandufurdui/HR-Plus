@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   FormErrorMessage,
@@ -13,20 +14,30 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalContent,
+  Select,
 } from "@chakra-ui/react";
 
-import { CreateEmployee } from "../services";
+import { CreateEmployee, GetCompanyEmployees } from "../services";
 import { useApi } from "../services/useApi";
 
 export const Employee = (props) => {
   const toast = useToast();
   const request = useApi();
+  const [employees, setEmployees] = useState([]);
 
   const {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
   } = useForm();
+
+  useEffect(() => {
+    request((accessToken) => GetCompanyEmployees(accessToken)).then(
+      (employees) => {
+        setEmployees(employees.data);
+      }
+    );
+  }, []);
 
   const onSubmit = async (values) => {
     try {
@@ -169,13 +180,22 @@ export const Employee = (props) => {
               <FormLabel color="white" htmlFor="managed_by_id">
                 Managed by ID
               </FormLabel>
-              <Input
+              <Select
                 type="text"
                 id="managed_by_id"
                 backgroundColor="white"
                 name="managed_by_id"
                 placeholder="Managed by ID"
-              />
+                {...register("managed_by_id", {
+                  required: "This field is required",
+                })}
+              >
+                {employees.map((employee) => (
+                  <option value={employee.id} key={employee.id}>
+                    {employee.first_name} {employee.last_name}
+                  </option>
+                ))}
+              </Select>
               <FormErrorMessage mt={0}>
                 {errors.managed_by_id && errors.managed_by_id.message}
               </FormErrorMessage>

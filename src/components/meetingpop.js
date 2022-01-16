@@ -15,8 +15,6 @@ import {
   ModalContent,
   Textarea,
   Checkbox,
-  CheckboxGroup,
-  Stack,
 } from "@chakra-ui/react";
 
 import "../style/meeting.css";
@@ -79,29 +77,27 @@ export const MeetingPopUp = (props) => {
               </FormErrorMessage>
             </FormControl>
 
-            <FormLabel color="white">
-              Meeting Time and Duration
-            </FormLabel>
+            <FormLabel color="white">Meeting Time and Duration</FormLabel>
 
             <FormControl
               isInvalid={errors.date}
               pb={errors.date ? 0 : 5}
               mb={2}
             >
-              <Flex direction="row" >
-              <FormLabel color="white" htmlFor="date">
-                Date
-              </FormLabel>
-              <Input
-                type="date"
-                id="date"
-                backgroundColor="white"
-                name="date"
-                required
-                {...register("date", {
-                  required: "This field is required",
-                })}
-              />
+              <Flex direction="row">
+                <FormLabel color="white" htmlFor="date">
+                  Date
+                </FormLabel>
+                <Input
+                  type="date"
+                  id="date"
+                  backgroundColor="white"
+                  name="date"
+                  required
+                  {...register("date", {
+                    required: "This field is required",
+                  })}
+                />
               </Flex>
             </FormControl>
             <FormControl
@@ -109,21 +105,21 @@ export const MeetingPopUp = (props) => {
               pb={errors.duration ? 0 : 5}
               mb={2}
             >
-              <Flex direction="row" >
-              <FormLabel color="white" htmlFor="duration">
-                Wage
-              </FormLabel>
-              <Input
-                type="number"
-                id="duration"
-                name="duration"
-                backgroundColor="white"
-                placeholder="Hours"
-                min="1"
-                {...register("duration", {
-                  required: "This field is required"
-                })}
-              />
+              <Flex direction="row">
+                <FormLabel color="white" htmlFor="duration">
+                  Wage
+                </FormLabel>
+                <Input
+                  type="number"
+                  id="duration"
+                  name="duration"
+                  backgroundColor="white"
+                  placeholder="Hours"
+                  min="1"
+                  {...register("duration", {
+                    required: "This field is required",
+                  })}
+                />
               </Flex>
               <FormErrorMessage mt={0}>
                 {errors.duration && errors.duration.message}
@@ -145,7 +141,7 @@ export const MeetingPopUp = (props) => {
                 placeholder="Notes..."
                 size="md"
                 {...register("meeting_notes", {
-                  required: "This field is required"
+                  required: "This field is required",
                 })}
               />
               <FormErrorMessage mt={0}>
@@ -153,27 +149,20 @@ export const MeetingPopUp = (props) => {
               </FormErrorMessage>
             </FormControl>
 
-            
             <FormControl
               isInvalid={errors.is_interview}
               pb={errors.is_interview ? 0 : 5}
               mb={2}
             >
               <Flex justifyContent="right">
-              <Checkbox
-                id="is_interview"
-                name="is_interview"
-                color="white"
-              >
-                Interview
-              </Checkbox>
+                <Checkbox id="is_interview" name="is_interview" color="white">
+                  Interview
+                </Checkbox>
               </Flex>
               <FormErrorMessage mt={0}>
                 {errors.is_interview && errors.is_interview.message}
               </FormErrorMessage>
             </FormControl>
-           
-
 
             <Flex justifyContent="center">
               <Button type="submit" colorScheme="red" isLoading={isSubmitting}>
@@ -181,7 +170,6 @@ export const MeetingPopUp = (props) => {
               </Button>
             </Flex>
           </form>
-
         </ModalBody>
       </ModalContent>
     </Modal>
