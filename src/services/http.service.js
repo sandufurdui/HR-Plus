@@ -1,7 +1,10 @@
 import axios from "axios";
 
 const axiosConfig = {
-  baseURL: "https://hrplus.herokuapp.com/",
+  baseURL: "http://localhost:5000/",
+  xsrfCookieName: "XSRF-TOKEN",
+  xsrfHeaderName: "X-CSRFToken",
+  withCredentials: true,
 };
 
 const httpService = axios.create(axiosConfig);
