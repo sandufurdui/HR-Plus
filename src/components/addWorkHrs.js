@@ -13,14 +13,16 @@ import {
     ModalContent,
     useNumberInput,
     HStack,
+    Flex
 } from "@chakra-ui/react";
 
 import { WorkHours } from "../services";
+import { useApi } from "../services/useApi";
 
 
 export const AddWorkHours = (props) => {
     const toast = useToast();
-    //   const request = useApi();
+      const request = useApi();
 
     const {
         handleSubmit,
@@ -30,7 +32,7 @@ export const AddWorkHours = (props) => {
 
     const onSubmit = async (values) => {
         try {
-            // await WorkHours(values);
+            await request ((accessToken) => WorkHours(values, accessToken));
 
             toast({
                 title: "Worked Hours added.",
@@ -84,9 +86,11 @@ export const AddWorkHours = (props) => {
                             </FormErrorMessage>
                         </FormControl>
 
-                        <button className="button-design" type="submit" value="Submit">
-                            Submit
-                        </button>
+                        <Flex justifyContent="center">
+                          <Button type="submit" colorScheme="red" isLoading={isSubmitting}>
+                           Submit
+                         </Button>
+                        </Flex>
                     </form>
                 </ModalBody>
             </ModalContent>
