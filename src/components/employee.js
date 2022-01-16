@@ -178,14 +178,14 @@ export const Employee = (props) => {
               mb={2}
             >
               <FormLabel color="white" htmlFor="managed_by_id">
-                Managed by ID
+                Managed by
               </FormLabel>
               <Select
                 type="text"
                 id="managed_by_id"
                 backgroundColor="white"
                 name="managed_by_id"
-                placeholder="Managed by ID"
+                placeholder="Managed by"
                 {...register("managed_by_id", {
                   required: "This field is required",
                 })}
