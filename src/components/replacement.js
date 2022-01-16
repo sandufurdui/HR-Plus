@@ -16,8 +16,11 @@ import {
   ModalContent,
 } from "@chakra-ui/react";
 
+import { useApi } from "../services/useApi";
+
 export const Replacement = (props) => {
   const toast = useToast();
+  const request = useApi();
 
   const {
     handleSubmit,
@@ -27,7 +30,7 @@ export const Replacement = (props) => {
 
   const onSubmit = async (values) => {
     try {
-      await ReplacementCost(values);
+      await request((accessToken) => ReplacementCost(values, accessToken));
 
       toast({
         title: "Replacement Cost added.",
@@ -364,7 +367,7 @@ export const Replacement = (props) => {
             </FormControl>
 
             <Flex justifyContent="center">
-              <Button type="submit" colorScheme="red" isLoading={isSubmitting}>
+              <Button type="submit" colorScheme="red" isLoading={isSubmitting} >
                 Submit
               </Button>
             </Flex>

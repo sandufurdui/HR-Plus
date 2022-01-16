@@ -136,6 +136,7 @@
 
 .margin-right-25 {
     margin-right: 25px;
+ 
 }
 
 .margin-top-25 {
@@ -179,4 +180,11 @@
     font-size: 40px!important;
     margin-top: 10px!important;
     margin-bottom: 0px !important;
+}
+
+input[type=date] {
+    border-radius: 8px;
+    background-color: white;
+    height: 33px;
+    padding: 5px;
 }

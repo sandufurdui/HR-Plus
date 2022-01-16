@@ -10,6 +10,10 @@ import Calendar from "../components/CalendarComp";
 
 import UserAvatar from "../assets/user-avatar.png";
 import Logo from "../assets/HR-app_logo-white.svg";
+import Facebook from "../assets/facebook.png";
+import Instagram from "../assets/instagram.png";
+import Twitter from "../assets/twitter.png";
+
 
 import "../style/footer.css";
 
@@ -61,8 +65,7 @@ export const UserDashboardPage = () => {
         <div className="inf">
           <img className="logo" src={Logo} alt="company" />
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim{" "}
+            Business driven. People focused{" "}
           </p>
         </div>
         <div className="contacts">
@@ -77,10 +80,12 @@ export const UserDashboardPage = () => {
           </a>
         </div>
         <div className="follow">
-          <h3>Follow us</h3>
-          <img className="insta" src="../instagram.png" />
-          <img className="facebook" src="../facebook.png" />
-          <img className="twitter" src="../twitter.png" />
+          <p>Follow us</p>
+          <div className="icons">
+            <img className="insta" src={Instagram} />
+            <img className="facebook" src={Facebook} />
+            <img className="twitter" src={Twitter} />
+          </div>
         </div>
       </div>
     </div>

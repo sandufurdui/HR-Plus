@@ -17,6 +17,7 @@ function router() {
           <UserDashboardPage />
         </Route>
         <Route path="/adminPanel">
+        {/* <AdminPage /> */}
           {isAdmin ? (<AdminPage />) : (<Redirect to="/userDashboard" />)}
         </Route>
         <Route path="/sign-in-sso">

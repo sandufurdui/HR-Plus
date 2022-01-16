@@ -8,4 +8,12 @@ const WorkHours = (calendar, accessToken) => {
   });
 };
 
-export { WorkHours };
+const GetWorkHours = (calendar, accessToken) => {
+  return httpService.get("calendars/", calendar, {
+    headers: {
+        Authorization: "Bearer " + accessToken,
+      },
+  });
+};
+
+export { WorkHours, GetWorkHours };

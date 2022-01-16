@@ -9,8 +9,18 @@ import Dropdown from "../components/dropdown";
 
 import Logo from "../assets/HR-app_logo-white.svg";
 import UserAvatar from "../assets/user-avatar.png";
+import Facebook from "../assets/facebook.png";
+import Instagram from "../assets/instagram.png";
+import Twitter from "../assets/twitter.png";
 
 import "../style/admin_panel.css";
+import "../style/footer.css"
+
+function Random(props) {
+  var maxNumber = 45;
+  var randomNumber = Math.floor((Math.random() * maxNumber) + 1);
+  return <div>${randomNumber} bil</div>;
+}
 
 export const AdminPage = () => {
   const history = useHistory();
@@ -40,9 +50,9 @@ export const AdminPage = () => {
       const company = await request((accessToken) =>
         GetCompanyById(employee.data.company_id, accessToken)
       );
-      if (company.data.id) {
-        setCompany(company.data);
-      }
+      // if (company.data.id) {
+      //   setCompany(company.data);
+      // }
     }
   };
 
@@ -95,21 +105,21 @@ export const AdminPage = () => {
           <div className="row centered-content">
             <div className="section section1  margin-right-75">
               <p className="title">Absenteeism Cost</p>
-              <p className="cost">$ 1bil</p>
+              <p className="cost"><Random /> </p>
             </div>
             <div className="section section2">
               <p className="title">Separation Cost</p>
-              <p className="cost">$ 1bil</p>
+              <p className="cost"><Random /></p>
             </div>
           </div>
           <div className="row centered-content margin-bottom">
             <div className="section section3 margin-right-75">
               <p className="title">Replacement Cost</p>
-              <p className="cost">$ 1bil</p>
+              <p className="cost"><Random /></p>
             </div>
             <div className="section section4">
               <p className="title">Training Cost</p>
-              <p className="cost">$ 1bil</p>
+              <p className="cost"><Random /></p>
             </div>
           </div>
         </div>
@@ -119,8 +129,7 @@ export const AdminPage = () => {
         <div className="inf">
           <img className="logo" src={Logo} alt="logo" />
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+          Business driven. People focused
           </p>
         </div>
         <div className="contacts">
@@ -135,10 +144,12 @@ export const AdminPage = () => {
           </a>
         </div>
         <div className="follow">
-          <h3>Follow us</h3>
-          <img className="insta" src="../instagram.png" />
-          <img className="facebook" src="../facebook.png" />
-          <img className="twitter" src="../twitter.png" />
+          <p>Follow us</p>
+          <div className="icons">
+            <img className="insta" src={Instagram} />
+            <img className="facebook" src={Facebook} />
+            <img className="twitter" src={Twitter} />
+          </div>
         </div>
       </div>
     </div>

@@ -12,11 +12,11 @@
 }
 
 img.logo {
-    width: 300px !important;
+    width: 100px !important;
 }
 
 .logo {
-    margin-bottom: -20px;
+    /* margin-bottom: -20px; */
     width: 45px;
 }
 
@@ -25,6 +25,7 @@ img.logo {
     flex-direction: column;
     flex-grow: 3;
     padding: 30px;
+    font-size: 1.2em;
 }
 
 a {
@@ -39,10 +40,21 @@ a {
 
 .follow {
     flex-grow: 1;
+    margin-bottom: 10px;
+    padding-top: 20px;
 }
 
-h3 {
-    color: #e2474b;
+p {
+    /* color: #e2474b; */
     margin-bottom: 5px;
     font-size: 1.5em;
+}
+
+.icons {
+    margin-top: 15px;
+    width:45px;
+    height: 35px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
