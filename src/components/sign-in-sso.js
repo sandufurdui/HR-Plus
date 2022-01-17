@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useHistory } from "react-router-dom";
 
-import { GetEmployeeByEmail, GetCSRFToken } from "../services";
+import { GetEmployeeByEmail } from "../services";
 import { useApi } from "../services/useApi";
 
 export const SignInSSO = () => {
@@ -22,9 +22,6 @@ export const SignInSSO = () => {
         }
       });
     }
-    GetCSRFToken().then((token) => {
-      window.cookieStore.set("XSRF-TOKEN", token.data);
-    });
   }, [isAuthenticated, user, history]);
 
   return <div>Logging in...</div>;
