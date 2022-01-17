@@ -14,11 +14,11 @@ import Instagram from "../assets/instagram.png";
 import Twitter from "../assets/twitter.png";
 
 import "../style/admin_panel.css";
-import "../style/footer.css"
+import "../style/footer.css";
 
 function Random(props) {
   var maxNumber = 45;
-  var randomNumber = Math.floor((Math.random() * maxNumber) + 1);
+  var randomNumber = Math.floor(Math.random() * maxNumber + 1);
   return <div>${randomNumber} bil</div>;
 }
 
@@ -50,9 +50,9 @@ export const AdminPage = () => {
       const company = await request((accessToken) =>
         GetCompanyById(employee.data.company_id, accessToken)
       );
-      // if (company.data.id) {
-      //   setCompany(company.data);
-      // }
+      if (company.data.id) {
+        setCompany(company.data);
+      }
     }
   };
 
@@ -105,21 +105,29 @@ export const AdminPage = () => {
           <div className="row centered-content">
             <div className="section section1  margin-right-75">
               <p className="title">Absenteeism Cost</p>
-              <p className="cost"><Random /> </p>
+              <p className="cost">
+                <Random />
+              </p>
             </div>
             <div className="section section2">
               <p className="title">Separation Cost</p>
-              <p className="cost"><Random /></p>
+              <p className="cost">
+                <Random />
+              </p>
             </div>
           </div>
           <div className="row centered-content margin-bottom">
             <div className="section section3 margin-right-75">
               <p className="title">Replacement Cost</p>
-              <p className="cost"><Random /></p>
+              <p className="cost">
+                <Random />
+              </p>
             </div>
             <div className="section section4">
               <p className="title">Training Cost</p>
-              <p className="cost"><Random /></p>
+              <p className="cost">
+                <Random />
+              </p>
             </div>
           </div>
         </div>
@@ -128,9 +136,7 @@ export const AdminPage = () => {
       <div className="footer">
         <div className="inf">
           <img className="logo" src={Logo} alt="logo" />
-          <p>
-          Business driven. People focused
-          </p>
+          <p>Business driven. People focused</p>
         </div>
         <div className="contacts">
           <a href="" className="about">

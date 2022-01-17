@@ -7,9 +7,7 @@ import { AdminPage } from "../pages/admin";
 import { SignInSSO } from "./sign-in-sso";
 import { CreateCompany } from "../pages/create-company";
 
-
 function router() {
-  const isAdmin = localStorage.getItem('role') === 'ADMIN'
   return (
     <BrowserRouter>
       <Switch>
@@ -17,8 +15,7 @@ function router() {
           <UserDashboardPage />
         </Route>
         <Route path="/adminPanel">
-        {/* <AdminPage /> */}
-          {isAdmin ? (<AdminPage />) : (<Redirect to="/userDashboard" />)}
+          <AdminPage />
         </Route>
         <Route path="/sign-in-sso">
           <SignInSSO />
